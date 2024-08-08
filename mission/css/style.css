@@ -353,9 +353,13 @@ footer {
 }
 
 TABLE, TH, TD {
-    border: black solid 1px;
-    padding: 4px;
+    /*border: white solid 1px;*/
     color: white;
+}
+
+TH, TD {
+    border: white solid 0;
+    padding: 4px;
 }
 
 THEAD {
