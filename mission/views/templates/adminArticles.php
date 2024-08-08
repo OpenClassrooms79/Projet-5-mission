@@ -12,7 +12,7 @@
     <tbody>
     <?php foreach ($articles as $article) { ?>
         <tr>
-            <td><?= $article->getTitle() ?></td>
+            <td><?= Utils::format($article->getTitle()) ?></td>
             <td><?= $article->getViews() ?></td>
             <td><?= $article->getCommentsCount() ?></td>
             <td><?= Utils::convertDateToFrenchFormat($article->getDateCreation()) ?></td>
