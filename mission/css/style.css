@@ -61,6 +61,27 @@ a {
     color: inherit;
 }
 
+TABLE, TH, TD {
+    color: black;
+}
+
+TH, TD {
+    border: white solid 0;
+    padding: 10px;
+}
+
+THEAD {
+    background-color: var(--headerColor);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--commentPaleColor);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(153, 161, 64, 0.6);
+}
+
 /**
  * Styles des formulaires.
  */
@@ -155,6 +176,10 @@ header > nav > a {
     text-transform: uppercase;
     font-size: 16px;
     color: white;
+}
+
+.menuLeftSeparator {
+    border-left: 2px solid white;
 }
 
 /**
@@ -338,70 +363,11 @@ a.info {
     border: 1px solid var(--backgroundColor);
 }
 
-/** 
- * Footer global de la page.
- */
-footer {
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-    color: white;
-    background-color: var(--headerColor);
-}
-
-TABLE, TH, TD {
-    /*border: white solid 1px;*/
-    color: white;
-}
-
-TH, TD {
-    border: white solid 0;
-    padding: 4px;
-}
-
-THEAD {
-    background-color: var(--headerColor);
-}
-
-tbody tr:nth-child(odd) {
-    background-color: var(--commentPaleColor);
-}
-
-tbody tr:nth-child(even) {
-    background-color: var(--commentColor);
-}
-
 .sorted {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     gap: 5px;
-}
-
-.sortedTitle {
-
-}
-
-.sortedOrder {
-
-}
-
-.cellCenter {
-    text-align: center;
-}
-
-.cellRight {
-    text-align: right;
-}
-
-TD > A {
-    border: 1px solid black;
-    padding: 0 15px 0 15px;
-    background-color: var(--quoteColor);
-    color: black;
 }
 
 FORM.deleteComments {
@@ -416,4 +382,49 @@ INPUT[type=submit] {
     margin-top: 50px;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+TD .submit {
+    display: block;
+}
+
+.articleTitle {
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--headerColor);
+}
+
+.deletedComments {
+    margin-top: 20px;
+}
+
+/** 
+ * Footer global de la page.
+ */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background-color: var(--headerColor);
+}
+
+/**
+ * Divers
+ */
+
+.cellCenter {
+    text-align: center;
+}
+
+.cellRight {
+    text-align: right;
+}
+
+.date {
+    white-space: nowrap;
 }

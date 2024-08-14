@@ -70,10 +70,16 @@ class CommentManager extends AbstractEntityManager
         return $result->rowCount() > 0;
     }
 
-    public function deleteComments(array $comments): bool
+    /**
+     * Supprime une liste de commentaires
+     *
+     * @param array $comments : tableau des id numériques des commentaires à supprimer
+     * @return int
+     */
+    public function deleteComments(array $comments): int
     {
         $sql = sprintf("DELETE FROM comment WHERE id IN(%s)", Utils::getPlaceholders(count($comments)));
         $result = $this->db->query($sql, $comments);
-        return $result->rowCount() > 0;
+        return $result->rowCount();
     }
 }

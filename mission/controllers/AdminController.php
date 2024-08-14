@@ -215,8 +215,10 @@ class AdminController
 
         // suppression des commentaires
         $comments = Utils::request('comments', []);
-        if (!empty($comments)) {
-            $commentManager->deleteComments($comments);
+        if (empty($comments)) {
+            $deleted = false;
+        } else {
+            $deleted = $commentManager->deleteComments($comments);
         }
 
         //on récupère les commentaires de l'article
@@ -226,7 +228,8 @@ class AdminController
         $view = new View("Suppression des commentaires");
         $view->render("adminComments", [
             'article' => $article,
-            'comments' => $comments
+            'comments' => $comments,
+            'deleted' => $deleted
         ]);
     }
 }

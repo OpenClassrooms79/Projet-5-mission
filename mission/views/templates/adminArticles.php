@@ -13,9 +13,9 @@
     <?php foreach ($articles as $article) { ?>
         <tr>
             <td><?= Utils::format($article->getTitle()) ?></td>
-            <td><?= $article->getViews() ?></td>
-            <td class="cellCenter"><a href="index.php?action=deleteComments&article=<?= $article->getId() ?>"><?= $article->getCommentsCount() ?></a></td>
-            <td class="cellRight"><?= Utils::convertDateToFrenchFormat($article->getDateCreation()) ?></td>
+            <td class="cellCenter"><?= $article->getViews() ?></td>
+            <td class="cellCenter"><a class="submit" href="index.php?action=deleteComments&article=<?= $article->getId() ?>" title="Aller à la gestion des commentaires"><?= $article->getCommentsCount() ?></a></td>
+            <td class="cellRight date"><?= Utils::convertDateToFrenchFormat($article->getDateCreation()) ?></td>
         </tr>
     <?php } ?>
     </tbody>
