@@ -81,6 +81,11 @@ try {
             $adminController->deleteArticle();
             break;
 
+        case 'deleteComments':
+            $adminController = new AdminController();
+            $adminController->showDeleteComments(Utils::request('article'));
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

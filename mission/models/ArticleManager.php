@@ -5,11 +5,11 @@
  */
 class ArticleManager extends AbstractEntityManager
 {
-    public const ALLOWED_FIELDS = [
+    public const ALLOWED_SORT_FIELDS = [
         'title', 'views', 'commentscount', 'date_creation', 'date_update'
     ];
 
-    public const ALLOWED_ORDERS = ['asc', 'desc'];
+    public const ALLOWED_SORT_ORDERS = ['asc', 'desc'];
 
     /**
      * Récupère tous les articles.
@@ -21,18 +21,16 @@ class ArticleManager extends AbstractEntityManager
         $sql = "SELECT * FROM articleView";
         $sortField = strtolower(trim(Utils::request('field', '')));
         $order = strtolower(trim(Utils::request('order', '')));
-        if (!in_array($sortField, self::ALLOWED_FIELDS)) {
-            $sortField = '';
+        if (!in_array($sortField, self::ALLOWED_SORT_FIELDS)) {
+            $sortField = 'date_creation';
         }
-        if (!in_array($order, self::ALLOWED_ORDERS)) {
+        if (!in_array($order, self::ALLOWED_SORT_ORDERS)) {
             $order = 'asc';
         }
 
         if (!empty($sortField)) {
             $sql .= sprintf(' ORDER BY %s %s', $sortField, $order);
-            echo "$sortField $order\n";
         }
-        printf("\n%s\n", $sql);
         $result = $this->db->query($sql);
 
         $articles = [];

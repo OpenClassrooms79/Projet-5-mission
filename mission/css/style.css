@@ -373,3 +373,47 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
     background-color: var(--commentColor);
 }
+
+.sorted {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.sortedTitle {
+
+}
+
+.sortedOrder {
+
+}
+
+.cellCenter {
+    text-align: center;
+}
+
+.cellRight {
+    text-align: right;
+}
+
+TD > A {
+    border: 1px solid black;
+    padding: 0 15px 0 15px;
+    background-color: var(--quoteColor);
+    color: black;
+}
+
+FORM.deleteComments {
+    background-color: var(--backgroundColor);
+}
+
+INPUT[type=submit] {
+    margin-top: 20px;
+}
+
+.message {
+    margin-top: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

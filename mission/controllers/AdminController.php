@@ -201,4 +201,32 @@ class AdminController
         // On redirige vers la page d'administration.
         Utils::redirect("admin");
     }
+
+    public function showDeleteComments(int $articleId): void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        $this->checkIfUserIsConnected();
+
+        // On récupère l'article
+        $articleManager = new ArticleManager();
+        $article = $articleManager->getArticleById($articleId);
+
+        $commentManager = new CommentManager();
+
+        // suppression des commentaires
+        $comments = Utils::request('comments', []);
+        if (!empty($comments)) {
+            $commentManager->deleteComments($comments);
+        }
+
+        //on récupère les commentaires de l'article
+        $comments = $commentManager->getAllCommentsByArticleId($articleId);
+
+        // On affiche la page d'administration.
+        $view = new View("Suppression des commentaires");
+        $view->render("adminComments", [
+            'article' => $article,
+            'comments' => $comments
+        ]);
+    }
 }

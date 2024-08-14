@@ -93,10 +93,10 @@ class Utils
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
 
-    public static function getSortLink(string $field): string
+    public static function getSortLink(string $title, string $field): string
     {
         $action = self::request('action', '');
-        $sortedField = self::request('field', '');
+        $sortedField = self::request('field', 'date_creation');
         $order = strtolower(trim(self::request('order', '')));
 
         if ($field === $sortedField) {
@@ -109,8 +109,13 @@ class Utils
             }
         } else {
             $newOrder = 'asc';
-            $text = '⬍';
+            $text = '';
         }
-        return sprintf('<a href="?action=%s&field=%s&order=%s">%s</a>', $action, $field, $newOrder, $text);
+        return sprintf('<a href="?action=%s&field=%s&order=%s" class="sorted" title="Cliquez pour inverser le tri"><div class="sortedTitle">%s</div><div class="sortedOrder">%s</div></a>', $action, $field, $newOrder, $title, $text);
+    }
+
+    public static function getPlaceholders(int $nb): string
+    {
+        return implode(', ', array_fill(0, $nb, '?'));
     }
 }
